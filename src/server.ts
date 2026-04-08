@@ -80,10 +80,11 @@ app.get('/health', (req: Request, res: Response) => {
 app.get('/work', (_req: Request, res: Response) => {
 
   const result = { message: 'Task finished', stepsDone: 3 };
+    logger.info('work finished', { stepsDone: result.stepsDone });
 
-  res.json(result);
 });
 
+// STEP 2: Example of a route that throws an error. This will crash the server if not handled.
 app.get('/risky-work', (_req: Request, res: Response) => {
   const data = JSON.parse('this is not valid json {{{');
   res.json({ ok: true, data });
