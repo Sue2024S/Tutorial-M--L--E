@@ -1,0 +1,23 @@
+{
+  "name": "tutorial-monitoring-logging-errors",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MEAN stack class: Express API in TypeScript (logging & errors lab). npm install, npm start. Node 18+. Edit src/*.ts; runs from dist/.",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/server.js",
+    "dev": "tsc && node dist/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

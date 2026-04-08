@@ -1,0 +1,16 @@
+# Installed packages (do not commit; each machine runs npm install)
+node_modules/
+
+# Local secrets (passwords, API keys) if you add a .env file later
+.env
+
+# Log files if you write logs to disk
+*.log
+
+# Mac system file (not needed in the repo)
+.DS_Store
+
+# Compiled TypeScript (rebuild with npm run build or npm start)
+dist/
+
+
