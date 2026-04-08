@@ -78,16 +78,27 @@ app.get('/health', (req: Request, res: Response) => {
 
 // STEP 1: Example of a route that does some work and logs extra info.
 app.get('/work', (_req: Request, res: Response) => {
+  logger.info('work started');
   const result = { message: 'Task finished', stepsDone: 3 };
+  logger.info('work finished', { stepsDone: result.stepsDone });
   res.json(result);
 });
 
 // STEP 2: Example of a route that throws an error. This will crash the server if not handled.
 app.get('/risky-work', (_req: Request, res: Response) => {
-  const data = JSON.parse('this is not valid json {{{');
-  res.json({ ok: true, data });
+  try {
+    const data = JSON.parse('this is not valid json {{{');
+    res.json({ ok: true, data });
+  } catch (err: unknown) {
+    const reason = err instanceof Error ? err.message : String(err);
+    logger.error('risky-work failed', { reason });
+    stats.errors += 1;
+    res.status(500).json({
+      ok: false,
+      userMessage: 'Something went wrong. Try again later.',
+    });
+  }
 });
-
 app.get('/stats', (_req: Request, res: Response) => {
   res.json({ ...stats });
 });
