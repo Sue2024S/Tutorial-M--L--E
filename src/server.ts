@@ -76,7 +76,9 @@ app.get('/health', (req: Request, res: Response) => {
   res.json({ ok: true, service: 'tutorial-api' });
 });
 
+// STEP 1: Example of a route that does some work and logs extra info.
 app.get('/work', (_req: Request, res: Response) => {
+
   const result = { message: 'Task finished', stepsDone: 3 };
 
   res.json(result);
